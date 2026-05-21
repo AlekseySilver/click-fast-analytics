@@ -1,0 +1,39 @@
+volumes:
+  clickhouse:
+    driver: local
+services:
+  clickhouse:
+    container_name: cfa-clickhouse-container
+    image: clickhouse/clickhouse-server
+    healthcheck:
+      test: ["CMD", "clickhouse-client", "--query=SELECT 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    user: "101:101"
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+      - "9009:9009"
+    volumes:
+      - clickhouse:/var/lib/clickhouse
+      - ./clickhouse/config:/etc/clickhouse-server
+      - ./clickhouse/logs:/var/log/clickhouse-server
+      - ./clickhouse/backups:/backups
+      - ./clickhouse/user_scripts:/var/lib/clickhouse/user_scripts
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+
+  fastapi:
+    container_name: cfa-fastapi-container
+    build: ./fastapi
+    ports:
+      - "8000:8000"
+    depends_on:
+      clickhouse:
+        condition: service_healthy
+    environment:
+      - WAIT_HOSTS=clickhouse:8123

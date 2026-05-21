@@ -1,0 +1,23 @@
+<clickhouse>
+<!-- Docs: <https://clickhouse.com/docs/operations/settings/settings_users/> -->
+<users>
+	<default>
+	<!-- User default is available only locally -->
+	<networks>
+		<ip>::1</ip>
+		<ip>127.0.0.1</ip>
+	</networks>
+	</default>
+	<admin>
+		<password>!5tronG</password>
+		<networks>
+			<ip>::/0</ip>
+		</networks>
+		<profile>default</profile>
+		<quota>default</quota>
+		<grants>
+			<query>GRANT ALL ON *.*</query>
+		</grants>
+	</admin>
+</users>
+</clickhouse>

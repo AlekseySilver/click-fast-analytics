@@ -1,0 +1,73 @@
+{
+    "title": "nyc taxi",
+    "source": "nyc_taxi",
+    "axises": [
+        {
+            "name": "trip_id",
+            "title": "trip id",
+            "type": "number"
+        },
+        {
+            "name": "pickup_datetime",
+            "title": "pickup datetime",
+            "type": "datetime"
+        },
+        {
+            "name": "passenger_count",
+            "title": "passenger count",
+            "type": "number"
+        },
+        {
+            "name": "payment_type",
+            "title": "payment type",
+            "type": "string"
+        },
+        {
+            "name": "pickup_ntaname",
+            "title": "pickup ntaname",
+            "type": "string"
+        },
+        {
+            "name": "dropoff_ntaname",
+            "title": "dropoff ntaname",
+            "type": "string"
+        },
+        {
+            "name": "vendor_id",
+            "title": "vendor id",
+            "type": "number"
+        },
+        {
+            "name": "rate_code_id",
+            "title": "rate code id",
+            "type": "number"
+        }
+    ],
+    "measures": [
+        {
+            "name": "trip_id",
+            "title": "count",
+            "agg": "count"
+        },
+        {
+            "name": "trip_distance",
+            "title": "distance",
+            "agg": "sum"
+        },
+        {
+            "name": "fare_amount",
+            "title": "fare amount",
+            "agg": "sum"
+        },
+        {
+            "name": "tip_amount",
+            "title": "tip amount",
+            "agg": "sum"
+        },
+        {
+            "name": "total_amount",
+            "title": "total amount",
+            "agg": "sum"
+        }
+    ]
+}
