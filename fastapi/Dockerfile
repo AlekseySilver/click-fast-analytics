@@ -10,8 +10,9 @@ COPY ./req.txt /app/req.txt
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade -r /app/req.txt
 
-# Copy application code
+# Copy application code and cubes
 COPY ./app /app
+COPY ./cube /app/cube
 
 # Expose port
 EXPOSE 8000

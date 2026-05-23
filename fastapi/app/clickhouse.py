@@ -1,6 +1,5 @@
 from clickhouse_connect import get_client
 from json import loads
-from random import random
 
 class CH:
 	def __init__(self):
